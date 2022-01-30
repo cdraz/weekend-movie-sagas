@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function MovieListItem({ movie }) {
 
@@ -15,7 +16,9 @@ function MovieListItem({ movie }) {
     return (
         <div key={movie.id} >
             <h3>{movie.title}</h3>
-            <img src={movie.poster} alt={movie.title} onClick={onPosterClick}/>
+            <Link to="/details">
+                <img src={movie.poster} alt={movie.title} onClick={onPosterClick}/>
+            </Link>
         </div>
     );
 }
