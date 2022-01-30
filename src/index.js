@@ -68,7 +68,13 @@ const genres = (state = [], action) => {
 }
 
 // Used to set selected movie for detail view
-const details = (state = {}, action) => {
+const details = (state = [{
+        description: '',
+        genre_array: [],
+        id: '',
+        poster: '',
+        title: ''
+    }], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return action.payload;
@@ -94,7 +100,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
