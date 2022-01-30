@@ -28,7 +28,7 @@ function MovieList() {
                 margin="50px"
             >
                 <Grid item xs={2} sm={4} md={4}>
-                    <Link to="/addmovie" style={{ textDecoration: 'none' }} exact>
+                    <Link to="/addmovie" style={{ textDecoration: 'none' }}>
                         <Button variant="contained">
                             Add New Movie
                         </Button>

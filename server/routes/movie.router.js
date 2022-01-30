@@ -44,6 +44,38 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+  console.log('in delete ', req.body);
+  // Delete from movies_genres first
+  const queryText = `
+    DELETE FROM movies_genres
+    WHERE movie_id = $1;
+  `
+  const queryParams = [
+    req.params.id
+  ]
+  pool.query(queryText, queryParams)
+    // Then delete from movies
+    .then(
+      result => { 
+      const nextQueryText = `
+        DELETE FROM movies
+        WHERE id = $1;
+        `
+      const nextQueryParams = [
+        req.params.id
+      ]
+      pool.query(nextQueryText, nextQueryParams)
+      .then( result => res.sendStatus(201))
+      .catch( err => console.error ('error in second delete from movies', err));
+    })
+    .catch( err => {
+      console.error('ERROR: delete movie', err);
+      res.sendStatus(500);
+    })
+  
+});
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie

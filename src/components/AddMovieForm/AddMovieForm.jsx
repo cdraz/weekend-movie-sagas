@@ -49,7 +49,7 @@ function AddMovieForm() {
     }
 
     return (
-        <Card sx={{ maxWidth: 600, margin: 'auto' }}>
+        <Card sx={{ maxWidth: 600, margin: 'auto', backgroundColor: '#eee', color: '#fff'}}>
             <CardContent>
                 <form onSubmit={handleSubmit}>
                     <FormControl sx={{ m: 1, width: 300 }}>
@@ -59,6 +59,7 @@ function AddMovieForm() {
                             label="Title"
                             defaultValue=""
                             onChange={handleChange}
+                            variant="filled"
                             sx={{ margin: '10px' }}
                         />
                     </FormControl>
@@ -69,17 +70,19 @@ function AddMovieForm() {
                             label="Poster URL"
                             defaultValue=""
                             onChange={handleChange}
+                            variant="filled"
                             sx={{ margin: '10px' }}
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: 300 }}>
-                        <InputLabel id="genre-input">Genre</InputLabel>
+                        <InputLabel id="genre-input">Genre *</InputLabel>
                         <Select
                             required
                             name="genre_id"
                             labelId="genre-input"
                             defaultValue=""
                             onChange={handleChange}
+                            variant="filled"
                             sx={{ margin: '10px' }}
                         >
                             {genres.map((genre) => (
@@ -101,17 +104,18 @@ function AddMovieForm() {
                             label="Description"
                             defaultValue=""
                             onChange={handleChange}
+                            variant="filled"
                             sx={{ margin: '10px' }}
                         />
-                        <Button variant="contained" type="submit">
+                        <Button variant="contained" type="submit" color="secondary" sx={{ marginTop: '15px' }}>
                             Save Movie
                         </Button>
                     </FormControl>
                 </form>
             </CardContent>
             <CardActions>
-                <Link to="/">
-                    <Button size="small" color="primary">
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <Button size="small" variant="outlined" color="secondary">
                         Cancel
                     </Button>
                 </Link>

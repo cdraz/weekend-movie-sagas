@@ -3,12 +3,25 @@ import './App.css';
 import AddMovieForm from'../AddMovieForm/AddMovieForm';
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#ddd',
+      },
+      secondary: {
+        main: '#834bff',
+      },
+    },
+  });
 
   return (
       <div className="App">
         <h1>The Movies Saga!</h1>
+        <ThemeProvider theme={theme}>
         <Router>        
           <Route path="/" exact>
             <MovieList />
@@ -22,6 +35,7 @@ function App() {
             <AddMovieForm />
           </Route>
         </Router>
+        </ThemeProvider>
       </div>
   );
 }
