@@ -14,13 +14,7 @@ function MovieDetails() {
     const details = useSelector(store => store.details[0]);
 
     return (
-        <Card sx={{
-            maxWidth: 600,
-            margin: 'auto',
-            paddingTop: '25px',
-            color: '#fff',
-            backgroundColor: '#212121'
-        }}>
+        <Card sx={{ maxWidth: 600, margin: 'auto' }}>
                 <CardMedia
                     component="img"
                     image={details.poster}
@@ -31,15 +25,15 @@ function MovieDetails() {
                     <Typography gutterBottom variant="h5" component="div">
                         {details.title}
                     </Typography>
-                    <Typography variant="body2" align="justify" sx={{ padding: '15px' }}>
+                    <Typography variant="body2" color="text.secondary" align="justify">
                         {details.description}
                     </Typography>
-                    <Typography variant="caption" align="justify">
+                    <Typography variant="caption" color="text.secondary" align="justify">
                         {details.genre_array.length <= 1 ? 'Genre' : 'Genres'}: {details.genre_array.join(', ')}
                     </Typography>
                 </CardContent>
             <CardActions>
-                <Link to ="/">
+                <Link to ="/" exact>
                     <Button size="small" color="primary">
                         Back
                     </Button>

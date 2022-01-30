@@ -1,10 +1,8 @@
 import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
+import AddMovieForm from'../AddMovieForm/AddMovieForm';
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
-
-// Material UI imports
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
 
@@ -20,7 +18,9 @@ function App() {
             <MovieDetails />
           </Route>
 
-          {/* Add Movie page */}
+          <Route path="/addmovie" exact>
+            <AddMovieForm />
+          </Route>
         </Router>
       </div>
   );
