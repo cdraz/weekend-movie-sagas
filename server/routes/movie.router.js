@@ -16,6 +16,20 @@ router.get('/', (req, res) => {
 
 });
 
+// GET details
+router.get('/:id', (req, res) => {
+  const queryText = ``
+  const queryParams = []
+  pool.query(queryText, queryParams)
+    .then( result => {
+      res.send(result.rows);
+    })
+    .catch( err => {
+      console.error('ERROR: Get details for selected movie', err);
+      res.sendStatus(500);
+    });
+});
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
