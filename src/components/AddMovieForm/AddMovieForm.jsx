@@ -1,31 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-
+import { Link, useHistory } from 'react-router-dom';
 
 // Material UI imports
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Grid from '@mui/material/Grid';
 import Select from '@mui/material/Select';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
-
-
 
 function AddMovieForm() {
 
-    // Store access, dispatch hook
+    // Store access, dispatch hook, history hook
     const genres = useSelector(store => store.genres);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // On component load, fetch genres to be used as selector options
     useEffect(() => {
@@ -48,6 +41,11 @@ function AddMovieForm() {
     const handleSubmit = event => {
         event.preventDefault();
         console.log('in onSubmit, POSTing: ', movieInput);
+        dispatch({
+            type: 'ADD_MOVIE',
+            payload: movieInput
+        })
+        history.push('/');
     }
 
     return (

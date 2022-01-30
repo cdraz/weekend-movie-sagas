@@ -22,7 +22,7 @@ function MovieListItem({ movie }) {
     }
     return (
         <Card sx={{ maxWidth: '300px', margin: 'auto', backgroundColor: '#212121' }} key={movie.id} >
-            <Link to="/details" style={{ textDecoration: 'none', color: 'white' }}>
+            <Link to="/details" style={{ textDecoration: 'none', color: 'white' }} exact>
                 <CardActionArea sx={{ paddingTop: '25px' }}>
                     <CardMedia
                         component="img"

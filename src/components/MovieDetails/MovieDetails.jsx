@@ -33,7 +33,7 @@ function MovieDetails() {
                     </Typography>
                 </CardContent>
             <CardActions>
-                <Link to ="/">
+                <Link to ="/" exact>
                     <Button size="small" color="primary">
                         Back
                     </Button>
