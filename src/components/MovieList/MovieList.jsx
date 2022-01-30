@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css';
 import MovieListItem from './MovieListItem/MovieListItem';
 
+// Material UI imports
+import Grid from '@mui/material/Grid';
+
 function MovieList() {
 
     const dispatch = useDispatch();
@@ -14,12 +17,13 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
-            <section className="movies">
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="movies">
                 {movies.map(movie => (
-                    <MovieListItem movie={movie} key={movie.id}/>
+                    <Grid item xs={2} sm={4} md={4} key={movies.indexOf(movie)}>
+                        <MovieListItem movie={movie} key={movie.id}/>
+                    </Grid>
                 ))}
-            </section>
+            </Grid>
         </main>
 
     );
