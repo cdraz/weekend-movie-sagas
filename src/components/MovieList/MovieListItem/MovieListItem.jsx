@@ -1,7 +1,16 @@
+import { useDispatch } from 'react-redux';
+
 function MovieListItem({ movie }) {
+
+    // Dispatch hook
+    const dispatch = useDispatch();
 
     const onPosterClick = () => {
         console.log('in onPosterClick', movie.id );
+        dispatch({
+            type: 'FETCH_DETAILS',
+            payload: movie.id
+        });
     }
     return (
         <div key={movie.id} >
