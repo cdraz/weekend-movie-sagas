@@ -28,7 +28,7 @@ function MovieListItem({ movie }) {
                         component="img"
                         image={movie.poster}
                         alt={movie.title}
-                        sx={{ height: '300px', width: '200px', margin: 'auto' }}
+                        sx={{ height: '360px', width: '240px', margin: 'auto' }}
                         onClick={onPosterClick}
                     />
                     <CardContent>
