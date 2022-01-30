@@ -14,6 +14,7 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('ADD_MOVIE', addMovie);
+    yield takeEvery('DELETE_MOVIE', deleteMovie);
     yield takeEvery('FETCH_DETAILS', fetchDetails);
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
@@ -29,6 +30,19 @@ function* addMovie(action) {
         })
     } catch {
         console.log('post movie error');
+    }
+}
+
+function* deleteMovie(action) {
+    // Delete movie from db
+    try {
+        yield axios.delete(`/api/movie/${action.payload}`);
+        yield put({
+            // Refresh after DELETE
+            type: 'FETCH_MOVIES'
+        });
+    } catch {
+        console.log('delete movie error')
     }
 }
 
