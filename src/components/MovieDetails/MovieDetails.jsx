@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Button, CardActions } from '@mui/material';
 import { sizing } from '@mui/system';
 
 function MovieDetails() {
@@ -16,21 +16,23 @@ function MovieDetails() {
 
     return (
         <Card sx={{ maxWidth: 600, margin: 'auto' }}>
-            <CardActionArea>
                 <CardMedia
                     component="img"
                     image={details.poster}
                     alt={details.title}
+                    sx={{ height: '40%', width: '40%', margin: 'auto' }}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {details.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" align="justify">
                         {details.description}
                     </Typography>
+                    <Typography variant="caption" color="text.secondary" align="justify">
+                        {details.genre_array.length <= 1 ? 'Genre' : 'Genres'}: {details.genre_array.join(', ')}
+                    </Typography>
                 </CardContent>
-            </CardActionArea>
             <CardActions>
                 <Link to ="/">
                     <Button size="small" color="primary">
